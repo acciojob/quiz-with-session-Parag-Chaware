@@ -1,8 +1,8 @@
 //your JS code here.
 const questionsElement = document.getElementById("questions");
 const submitButton = document.getElementById("submit");
+const scoreElement = document.getElementById("score");
 const userAnswers = JSON.parse(sessionStorage.getItem("progress")) || {};
-
 // Save progress in session storage
 function saveProgress() {
   for (let i = 0; i < questions.length; i++) {
@@ -30,7 +30,7 @@ function submitQuiz() {
   saveProgress();
   const score = calculateScore();
   localStorage.setItem("score", score);
-  document.getElementById("score").innerText = `Your score is ${score} out of 5.`;
+  scoreElement.innerText = `Your score is ${score} out of 5.`;
 }
 
 // Event listener for submit button
@@ -39,8 +39,9 @@ submitButton.addEventListener("click", submitQuiz);
 // Save progress whenever a choice is selected
 questionsElement.addEventListener("change", saveProgress);
 
-// Render the questions when the page loads
-document.getElementById("score").innerText = `Your previous score: ${localStorage.getItem("score") || "N/A"}`;
+
+// Initially, the score element should be empty
+scoreElement.innerText = "";
 // Do not change code below this line
 // This code will just display the questions to the screen
 const questions = [

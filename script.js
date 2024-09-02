@@ -40,8 +40,7 @@ submitButton.addEventListener("click", submitQuiz);
 questionsElement.addEventListener("change", saveProgress);
 
 // Render the questions when the page loads
-renderQuestions();
-
+document.getElementById("score").innerText = `Your previous score: ${localStorage.getItem("score") || "N/A"}`;
 // Do not change code below this line
 // This code will just display the questions to the screen
 const questions = [
